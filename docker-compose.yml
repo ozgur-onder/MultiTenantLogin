@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    container_name: bi_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ozgur.onder
+      POSTGRES_PASSWORD: BZrf5399!
+      POSTGRES_DB: bi_veritabani
+      TZ: Europe/Istanbul
+    ports:
+      - "5880:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - bi-network
+
+  app:
+    build: .
+    container_name: bi_app
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      - DB_HOST=db
+      - DB_NAME=bi_veritabani
+      - DB_USER=ozgur.onder
+      - DB_PASS=BZrf5399!
+      - DB_PORT=5432
+    depends_on:
+      - db
+    networks:
+      - bi-network
+
+volumes:
+  pgdata:
+
+networks:
+  bi-network:
+    driver: bridge
