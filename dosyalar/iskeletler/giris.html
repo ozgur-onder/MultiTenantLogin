@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İş Zekası Platformu</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232563eb'><path d='M3 3h2v18H3V3zm6 8h2v10H9V11zm6-5h2v15h-2V6zm6 4h2v11h-2v-11z'/></svg>">
+    <link id="theme-style" rel="stylesheet" href="/temalar/giris_sayfasi/beyaz.css">
+    <script src="/dosyalar/betikler/giris_sayfasi/giris.js"></script>
+</head>
+<body>
+
+    <div class="split-layout">
+        <div class="brand-panel">
+            <div class="brand-content">
+                <h1>İş Zekası Platformu</h1>
+                <p>Yerli ve milli iş zekası çözümü.</p>
+            </div>
+        </div>
+
+        <div class="form-panel">
+            <div class="top-controls">
+                <button class="theme-toggle" title="Temayı Değiştir">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="form-wrapper">
+                <h2>Hesabınıza Giriş Yapın</h2>
+                <p class="subtitle">Devam etmek için bilgilerinizi girin.</p>
+
+                <div class="input-group">
+                    <label for="kullanici_adi">E-Posta</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="kullanici_adi" placeholder="Lütfen E-Posta Adresinizi Giriniz">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Şifre</label>
+                    <div class="input-wrapper">
+                        <input type="password" id="password" placeholder="••••••••">
+                        <button type="button" class="toggle-btn" id="togglePasswordBtn">
+                            <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <button class="login-btn" id="loginBtn">Giriş Yap</button>
+
+                <div class="forgot-password">
+                    <a href="/sayfalar/sifremi_unuttum" class="forgot-password-link">Şifremi unuttum</a>
+                </div>
+            </div>
+
+            <div class="panel-footer">
+                &copy; 2026 İş Zekası Platformu. Tüm hakları saklıdır.
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html> 

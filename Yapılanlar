@@ -1,0 +1,13 @@
+##Sanal Ortam Oluşturularak Aktifleştirildi##
+
+python3 -m venv venv  
+source venv/bin/activate 
+python3 -m ensurepip --upgrade
+
+
+##PSQL ve FastAPI Kuruldu##
+pip install psycopg2-binary
+pip install fastapi uvicorn jinja2
+
+##Çalıştırma Adımları
+terminalde python sunucu.py yazılması yeterlidir.
