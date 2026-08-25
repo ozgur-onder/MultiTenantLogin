@@ -6,15 +6,13 @@ import psycopg2
 
 router = APIRouter()
 
-DB_HOST = os.getenv("DB_HOST", "db")
-DB_NAME = os.getenv("DB_NAME", "bi_veritabani")
-DB_USER = os.getenv("DB_USER", "ozgur.onder")
-DB_PASS = os.getenv("DB_PASS", "BZrf5399!")
-DB_PORT = os.getenv("DB_PORT", "5432")
-
 def veritabani_baglantisi():
     return psycopg2.connect(
-        host=DB_HOST, database=DB_NAME, user=DB_USER, password=DB_PASS, port=DB_PORT
+        host=os.getenv("DB_HOST"),
+        database=os.getenv("DB_NAME"),
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASS"),
+        port=os.getenv("DB_PORT", "5432")
     )
 
 @router.post("/kurulum-tamamla")
@@ -72,7 +70,7 @@ async def kurulum_tamamla(
         
         smtp_ayar_id = cursor.fetchone()[0]
 
-        # 5. SMTP Log Tablosuna Veri Basma (Log kaydı artık ekleniyor)
+        # 5. SMTP Log Tablosuna Veri Basma
         cursor.execute("""
             INSERT INTO smtp_ayarlari_loglari (smtp_ayar_id, islem_turu, yeni_sunucu, yeni_kullanici_adi, islem_yapan_kullanici_sicil)
             VALUES (%s, 'KURULUM_EKLENDI', %s, %s, %s)
