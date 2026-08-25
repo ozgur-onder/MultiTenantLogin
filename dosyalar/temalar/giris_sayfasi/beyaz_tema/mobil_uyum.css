@@ -1,0 +1,8 @@
+@media (max-width: 768px) {
+    body { overflow: auto; }
+    .split-layout { flex-direction: column; height: auto; }
+    .brand-panel { padding: 40px 20px; border-right: none; border-bottom: 1px solid #e2e8f0; }
+    .form-panel { padding: 40px 20px 100px 20px; }
+    .top-controls { top: 20px; right: 20px; }
+    .panel-footer { bottom: 20px; }
+}

@@ -1,0 +1,24 @@
+.forgot-password {
+    text-align: center;
+}
+
+.forgot-password-link {
+    color: var(--link-renk);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.forgot-password-link:hover {
+    color: var(--link-hover);
+}
+
+.panel-footer {
+    position: absolute;
+    bottom: 30px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--yazi-ikincil);
+    width: 100%;
+}

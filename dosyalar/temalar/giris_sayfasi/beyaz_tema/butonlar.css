@@ -1,0 +1,69 @@
+.top-controls {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    color: var(--yazi-ikincil);
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.theme-toggle:hover {
+    background-color: #f1f5f9;
+    color: var(--yazi-renk);
+}
+
+.theme-toggle svg {
+    width: 22px;
+    height: 22px;
+}
+
+.toggle-btn {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    outline: none;
+    color: var(--yazi-ikincil);
+    transition: color 0.2s;
+}
+
+.toggle-btn:hover {
+    color: var(--yazi-renk);
+}
+
+.login-btn {
+    width: 100%;
+    display: block;
+    margin: 30px 0 16px 0;
+    padding: 14px;
+    background-color: var(--buton-arkaplan);
+    color: var(--buton-yazi);
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.login-btn:hover {
+    background-color: var(--buton-hover);
+}
