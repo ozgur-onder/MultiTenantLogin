@@ -42,21 +42,31 @@
     color: var(--yazi-ikincil);
 }
 
+.no-icon-input,
 .input-wrapper input {
     width: 100%;
-    /* Eski 44px sol boşluk kaldırıldı, her yönden eşit 14px yapıldı */
-    padding: 14px;
+    padding: 12px 16px;
     box-sizing: border-box;
     background-color: var(--input-arkaplan);
     border: 1px solid var(--input-kenarlik);
     border-radius: 8px;
     color: var(--yazi-renk);
-    font-size: 15px;
+    font-size: 0.95rem;
     outline: none;
     transition: border-color 0.2s, box-shadow 0.2s;
 }
 
+.no-icon-input:focus,
 .input-wrapper input:focus {
-    border-color: var(--buton-arkaplan);
+    border-color: var(--vurgu-renk);
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+input:-webkit-autofill, 
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px var(--input-arkaplan) inset !important;
+    -webkit-text-fill-color: var(--yazi-renk) !important;
+    transition: background-color 5000s ease-in-out 0s;
 }
