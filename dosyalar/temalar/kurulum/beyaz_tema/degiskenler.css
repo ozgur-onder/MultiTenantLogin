@@ -1,0 +1,19 @@
+:root {
+    --arkaplan-sol: #f4f7f6;
+    --arkaplan-sag: #ffffff;
+    --yazi-renk: #0f172a;
+    --yazi-ikincil: #64748b;
+    --input-arkaplan: #ffffff;
+    --input-kenarlik: #cbd5e1;
+    --buton-arkaplan: #2563eb;
+    --buton-hover: #1d4ed8;
+    --buton-yazi: #ffffff;
+    --link-renk: #64748b;
+    --link-hover: #2563eb;
+    /* Kurulum sayfasına özel bilgi kutusu renkleri */
+    --bilgi-kutu-arkaplan: #eff6ff; 
+    --bilgi-kutu-yazi: #334155;
+    --bilgi-kutu-border: #3b82f6;
+    --basari-renk: #10b981;
+    --hata-renk: #ef4444;
+}

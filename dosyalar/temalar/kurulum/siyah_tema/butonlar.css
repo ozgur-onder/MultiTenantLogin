@@ -1,0 +1,84 @@
+.top-controls {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    z-index: 10;
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    color: var(--yazi-ikincil);
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.theme-toggle:hover {
+    background-color: var(--arkaplan-sol);
+    color: var(--yazi-renk);
+}
+
+.theme-toggle svg { width: 22px; height: 22px; }
+
+.toggle-btn {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    outline: none;
+    color: var(--yazi-ikincil);
+    transition: color 0.2s;
+}
+
+.toggle-btn:hover { color: var(--yazi-renk); }
+
+.button-group {
+    display: flex;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 1px solid var(--input-kenarlik);
+    color: var(--yazi-renk);
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    flex: 1;
+    transition: 0.3s;
+}
+
+.btn-secondary:hover { background: rgba(255, 255, 255, 0.05); }
+
+.login-btn {
+    width: 100%;
+    display: block;
+    padding: 14px;
+    background-color: var(--buton-arkaplan);
+    color: var(--buton-yazi);
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    flex: 2;
+}
+
+.login-btn:hover { background-color: var(--buton-hover); }
+.login-btn:disabled { opacity: 0.7; cursor: not-allowed; }

@@ -1,0 +1,120 @@
+.form-wrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+.form-wrapper h2 {
+    font-size: 28px;
+    margin: 0 0 5px 0;
+    font-weight: 600;
+}
+
+.step-indicator {
+    font-size: 0.85rem;
+    color: var(--buton-arkaplan);
+    font-weight: 600;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.info-box {
+    background-color: var(--bilgi-kutu-arkaplan);
+    border-left: 4px solid var(--bilgi-kutu-border);
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    font-size: 0.85rem;
+    color: var(--bilgi-kutu-yazi);
+    line-height: 1.5;
+    border-radius: 0 6px 6px 0;
+}
+
+.step-container {
+    display: none;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.step-container.active { display: block; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.row-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.half-width { flex: 1; }
+
+.input-group { margin-bottom: 12px; }
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--yazi-ikincil);
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.sifre-kutusu-kapsayici { position: relative; }
+
+.input-wrapper input {
+    width: 100%;
+    padding: 12px 14px;
+    box-sizing: border-box;
+    background-color: var(--input-arkaplan);
+    border: 1px solid var(--input-kenarlik);
+    border-radius: 8px;
+    color: var(--yazi-renk);
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-wrapper input:focus {
+    border-color: var(--buton-arkaplan);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+}
+input[type=number] { -moz-appearance: textfield; }
+
+.password-rules {
+    font-size: 0.70rem;
+    margin-top: 5px;
+    margin-bottom: 0;
+    color: var(--yazi-ikincil);
+    list-style-type: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+}
+
+.password-rules li { display: flex; align-items: center; gap: 4px; margin: 0; }
+.rule-pass { color: var(--basari-renk) !important; }
+.rule-fail { color: var(--hata-renk) !important; }
+
+.eslesme-mesaji {
+    font-size: 0.70rem; 
+    margin-top: 5px; 
+    margin-bottom: 0; 
+    display: none;
+}

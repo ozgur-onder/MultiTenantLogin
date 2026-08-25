@@ -1,0 +1,8 @@
+.panel-footer {
+    margin-top: 20px;
+    padding-bottom: 10px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--yazi-ikincil);
+    width: 100%;
+}

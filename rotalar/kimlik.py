@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Form
 from fastapi.responses import JSONResponse
 
+# Form işlemlerini (API) yönetecek router
 router = APIRouter()
 
 @router.post("/giris-yap")

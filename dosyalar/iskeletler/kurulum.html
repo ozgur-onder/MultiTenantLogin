@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Kurulumu - İş Zekası Platformu</title>
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232563eb'><path d='M3 3h2v18H3V3zm6 8h2v10H9V11zm6-5h2v15h-2V6zm6 4h2v11h-2v-11z'/></svg>">
+    <link id="theme-style" rel="stylesheet" href="/temalar/kurulum/beyaz.css">
+</head>
+<body>
+
+    <div id="customToast">
+        <svg id="toastIcon" class="toast-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg>
+        <span id="toastMessage">Bildirim mesajı buraya gelecek</span>
+    </div>
+
+    <div class="split-layout">
+        
+        <div class="brand-panel">
+            <div class="brand-content">
+                <svg class="brand-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <h1>Kurulum Sihirbazı</h1>
+                <p>Platformunuzu ayağa kaldırmak için yönetici hesabınızı ve mail ayarlarınızı yapılandırın.</p>
+            </div>
+        </div>
+
+        <div class="form-panel kurulum-paneli">
+            
+            <div class="top-controls">
+                <button class="theme-toggle" title="Temayı Değiştir">
+                </button>
+            </div>
+
+            <div class="form-wrapper">
+                <h2>Hoş Geldiniz</h2>
+              
+                <div id="step-1" class="step-container active">
+                    <span class="step-indicator">Adım 1/2: Sistem Yöneticisi</span>
+                    
+                    <div class="info-box">
+                        <strong>Sistem Yöneticisi Kullanıcısı Eklemek;</strong> Firma, rol ve diğer kullanıcı tanımlarını yapmak için gereklidir. Lütfen bilgileri daha sonra unutmayacak şekilde doldurunuz.
+                    </div>
+
+                    <div class="row-group">
+                        <div class="input-group half-width">
+                            <label for="ad">Ad</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="ad" class="no-icon-input" autocomplete="new-password" placeholder="Örn: Ahmet" required>
+                            </div>
+                        </div>
+                        <div class="input-group half-width">
+                            <label for="soyad">Soyad</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="soyad" class="no-icon-input" autocomplete="new-password" placeholder="Örn: Yılmaz" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row-group">
+                        <div class="input-group half-width">
+                            <label for="sicil-no">Sicil Numarası</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="sicil-no" class="no-icon-input" autocomplete="new-password" placeholder="Örn: 1001" required>
+                            </div>
+                        </div>
+                        <div class="input-group half-width">
+                            <label for="email">E-posta</label>
+                            <div class="input-wrapper">
+                                <input type="email" id="email" class="no-icon-input" autocomplete="new-password" placeholder="admin@sirket.com" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="password">Yönetici Parolası</label>
+                        <div class="input-wrapper sifre-kutusu-kapsayici">
+                            <input type="password" id="password" class="no-icon-input" autocomplete="new-password" placeholder="Güçlü bir parola belirleyin" required>
+                            <button type="button" class="toggle-btn sifre-goster-btn">
+                                <svg id="eye1" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                            </button>
+                        </div>
+                        <ul class="password-rules" id="rulesList">
+                            <li id="rule-len" class="rule-fail">✖ En az 12 karakter</li>
+                            <li id="rule-upper" class="rule-fail">✖ En az 1 büyük harf</li>
+                            <li id="rule-lower" class="rule-fail">✖ En az 1 küçük harf</li>
+                            <li id="rule-num" class="rule-fail">✖ En az 1 rakam</li>
+                            <li id="rule-spec" class="rule-fail">✖ En az 1 özel karakter</li>
+                        </ul>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="password-confirm">Parolayı Onayla</label>
+                        <div class="input-wrapper sifre-kutusu-kapsayici">
+                            <input type="password" id="password-confirm" class="no-icon-input" autocomplete="new-password" placeholder="Parolayı tekrar girin" required>
+                            <button type="button" class="toggle-btn sifre-goster-btn-onay">
+                                <svg id="eye2" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                            </button>
+                        </div>
+                        <p id="match-msg" class="eslesme-mesaji"></p>
+                    </div>
+
+                    <button class="login-btn ileri-btn" id="ileriBtn">İleri ➔</button>
+                </div>
+
+                <div id="step-2" class="step-container">
+                    <span class="step-indicator">Adım 2/2: Mail (SMTP) Ayarları</span>
+                    
+                    <div class="info-box">
+                        <strong>Otomatik mail gönderimi</strong> (şifre sıfırlama, rapor iletimi vb.) yapılmasını sağlayan hesap bilgilerinin girilmesi gereklidir. Tüm alanlar zorunludur.
+                    </div>
+
+                    <div class="row-group">
+                        <div class="input-group half-width">
+                            <label for="smtp-sunucu">SMTP Sunucusu</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="smtp-sunucu" class="no-icon-input" autocomplete="off" placeholder="Örn: mail.sirket.com" required>
+                            </div>
+                        </div>
+                        <div class="input-group half-width">
+                            <label for="smtp-port">SMTP Portu</label>
+                            <div class="input-wrapper">
+                                <input type="number" id="smtp-port" class="no-icon-input" autocomplete="off" placeholder="Örn: 465" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row-group">
+                        <div class="input-group half-width">
+                            <label for="smtp-email">Gönderici E-Posta</label>
+                            <div class="input-wrapper">
+                                <input type="email" id="smtp-email" class="no-icon-input" autocomplete="off" placeholder="Örn: no-reply@sirket.com" required>
+                            </div>
+                        </div>
+                        <div class="input-group half-width">
+                            <label for="smtp-sifre">E-Posta Şifresi</label>
+                            <div class="input-wrapper sifre-kutusu-kapsayici">
+                                <input type="password" id="smtp-sifre" class="no-icon-input" autocomplete="new-password" placeholder="Mail şifreniz" required>
+                                <button type="button" class="toggle-btn sifre-goster-btn-smtp">
+                                    <svg id="eye3" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="smtp-gonderici">Görünen Gönderici Adı</label>
+                        <div class="input-wrapper">
+                            <input type="text" id="smtp-gonderici" class="no-icon-input" autocomplete="off" placeholder="Örn: İş Zekası Platformu" required>
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button type="button" class="btn-secondary" id="geriBtn">← Geri Dön</button>
+                        <button class="login-btn" id="submitBtn">Sistemi Başlat</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="panel-footer">
+                &copy; 2026 İş Zekası Platformu. İlk Kurulum Ekranı.
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Modüler JS Dosyalarımız -->
+    <script src="/dosyalar/betikler/kurulum/tema.js"></script>
+    <script src="/dosyalar/betikler/kurulum/kurulum_arayuz.js"></script>
+    <script src="/dosyalar/betikler/kurulum/kurulum_islem.js"></script>
+
+</body>
+</html>

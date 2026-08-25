@@ -1,0 +1,9 @@
+@media (max-width: 768px) {
+    body { overflow: auto; }
+    .split-layout { flex-direction: column; height: auto; }
+    .brand-panel { padding: 40px 20px; border-right: none; border-bottom: 1px solid #e2e8f0; }
+    .form-panel.kurulum-paneli { padding: 40px 20px; overflow-y: visible; }
+    .top-controls { top: 10px; right: 10px; }
+    .row-group { flex-direction: column; gap: 0; margin-bottom: 0; }
+    .password-rules { grid-template-columns: 1fr; }
+}
