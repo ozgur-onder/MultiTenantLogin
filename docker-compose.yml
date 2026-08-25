@@ -1,14 +1,12 @@
-version: '3.8'
-
 services:
   db:
     image: postgres:15
     container_name: bi_postgres
     restart: always
     environment:
-      POSTGRES_USER: ozgur.onder
-      POSTGRES_PASSWORD: BZrf5399!
-      POSTGRES_DB: bi_veritabani
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_DB: ${DB_NAME}
       TZ: Europe/Istanbul
     ports:
       - "5880:5432"
@@ -24,12 +22,8 @@ services:
     restart: always
     ports:
       - "5000:5000"
-    environment:
-      - DB_HOST=db
-      - DB_NAME=bi_veritabani
-      - DB_USER=ozgur.onder
-      - DB_PASS=BZrf5399!
-      - DB_PORT=5432
+    env_file:
+      - .env
     depends_on:
       - db
     networks:
