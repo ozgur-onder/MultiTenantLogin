@@ -15,3 +15,7 @@ async def anasayfa(request: Request):
 @router.get("/sayfalar/sifremi_unuttum", response_class=HTMLResponse)
 async def sifremi_unuttum(request: Request):
     return sayfalar.TemplateResponse(request=request, name="sifremi_unuttum.html", context={"request": request})
+
+@router.get("/sayfalar/kurulum", response_class=HTMLResponse)
+async def kurulum(request: Request):
+    return sayfalar.TemplateResponse(request=request, name="kurulum.html", context={"request": request})
