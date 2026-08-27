@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yeni Şifre Belirle - İş Zekası Platformu</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232563eb'><path d='M3 3h2v18H3V3zm6 8h2v10H9V11zm6-5h2v15h-2V6zm6 4h2v11h-2v-11z'/></svg>">
+    <link id="theme-style" rel="stylesheet" href="/temalar/sifremi_unuttum/beyaz.css">
+</head>
+<body>
+
+    <div class="split-layout">
+
+        <div class="brand-panel">
+            <div class="brand-content">
+                <h1>İş Zekası Platformu</h1>
+                <p>Yerli ve milli iş zekası çözümü.</p>
+            </div>
+        </div>
+
+        <div class="form-panel">
+
+            <div class="top-controls">
+                <button class="theme-toggle" title="Temayı Değiştir"></button>
+            </div>
+
+            <div class="form-wrapper">
+                <h2>Yeni Şifre Belirle</h2>
+                <p class="subtitle">Lütfen hesabınız için yeni şifrenizi girin.</p>
+
+                <div class="input-group">
+                    <label for="yeni-sifre">Yeni Şifre</label>
+                    <div class="input-wrapper">
+                        <input type="password" id="yeni-sifre" autocomplete="new-password"
+                               placeholder="En az 12 karakter, büyük/küçük harf ve özel karakter">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="sifre-tekrar">Şifre Tekrar</label>
+                    <div class="input-wrapper">
+                        <input type="password" id="sifre-tekrar" autocomplete="new-password"
+                               placeholder="Şifreyi tekrar girin">
+                    </div>
+                </div>
+
+                <button class="login-btn" id="yenileBtn">Şifremi Güncelle</button>
+
+                <div class="forgot-password">
+                    <a href="/" class="forgot-password-link">← Giriş ekranına dön</a>
+                </div>
+            </div>
+
+            <div class="panel-footer">
+                &copy; 2026 İş Zekası Platformu. Tüm hakları saklıdır.
+            </div>
+
+        </div>
+    </div>
+
+    <script src="/dosyalar/betikler/sifre_yenile/tema.js"></script>
+    <script src="/dosyalar/betikler/sifre_yenile/sifre_yenile_islem.js"></script>
+
+</body>
+</html>
