@@ -35,12 +35,13 @@ document.addEventListener("DOMContentLoaded", function () {
                     alert(cevap.mesaj);
                     sicilKutusu.value = '';
                     epostaKutusu.value = '';
-                    
+
                     setTimeout(() => {
                         window.location.href = "/";
                     }, 1500);
                 } else {
-                    alert(cevap.mesaj || "Bir hata oluştu, lütfen tekrar deneyin.");
+                    // DÜZELTME 2: Backend hata için {"detail":"..."} döndürüyor, "mesaj" değil
+                    alert(cevap.detail || "Bir hata oluştu, lütfen tekrar deneyin.");
                 }
             } catch (hata) {
                 alert("Sunucuya ulaşılamıyor. Lütfen bağlantınızı kontrol edin.");

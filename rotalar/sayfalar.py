@@ -38,6 +38,17 @@ async def anasayfa(request: Request):
 async def sifremi_unuttum(request: Request):
     return sayfalar.TemplateResponse(request=request, name="sifremi_unuttum.html", context={"request": request})
 
+@router.get("/sayfalar/sifre_yenile", response_class=HTMLResponse)
+async def sifre_yenile(request: Request, token: str = None):
+    # Token yoksa şifremi unuttum sayfasına yönlendir
+    if not token:
+        return RedirectResponse(url="/sayfalar/sifremi_unuttum", status_code=303)
+    return sayfalar.TemplateResponse(
+        request=request,
+        name="sifre_yenile.html",
+        context={"request": request, "token": token}
+    )
+
 @router.get("/sayfalar/kurulum", response_class=HTMLResponse)
 async def kurulum(request: Request):
     if kullanici_var_mi():
