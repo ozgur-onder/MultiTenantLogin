@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<style>
+  body{margin:0;padding:0;background:#f1f5f9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;}
+  .wrap{max-width:560px;margin:40px auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.08);}
+  .head{background:linear-gradient(135deg,#1e40af 0%,#2563eb 100%);padding:36px 40px;text-align:center;}
+  .head svg{display:block;margin:0 auto 14px;}
+  .head h1{color:#fff;margin:0;font-size:22px;font-weight:700;letter-spacing:-.3px;}
+  .head p{color:rgba(255,255,255,.75);margin:6px 0 0;font-size:13px;}
+  .body{padding:40px;}
+  .body h2{color:#111827;font-size:20px;margin:0 0 12px;font-weight:600;}
+  .body p{color:#4b5563;font-size:15px;line-height:1.65;margin:0 0 24px;}
+  .btn-wrap{text-align:center;margin:32px 0;}
+  .btn{display:inline-block;background:#2563eb;color:#fff !important;text-decoration:none;padding:14px 40px;border-radius:8px;font-size:15px;font-weight:600;}
+  .fallback{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:14px 16px;margin:0 0 24px;}
+  .fallback p{color:#6b7280;font-size:12px;margin:0 0 4px;}
+  .fallback a{color:#2563eb;font-size:12px;word-break:break-all;text-decoration:none;}
+  .warning{background:#fef3c7;border-left:4px solid #f59e0b;border-radius:0 6px 6px 0;padding:12px 16px;margin:0 0 8px;}
+  .warning p{color:#92400e;font-size:13px;margin:0;line-height:1.5;}
+  .foot{background:#f8fafc;border-top:1px solid #e5e7eb;padding:24px 40px;text-align:center;}
+  .foot p{color:#9ca3af;font-size:12px;margin:0;line-height:1.7;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="head">
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 3h2v18H3V3zm6 8h2v10H9V11zm6-5h2v15h-2V6zm6 4h2v11h-2v-11z" fill="rgba(255,255,255,0.9)"/>
+    </svg>
+    <h1>İş Zekası Platformu</h1>
+    <p>Yerli ve milli iş zekası çözümü</p>
+  </div>
+
+  <div class="body">
+    <h2>Şifre Sıfırlama Talebi</h2>
+    <p>Hesabınız için bir şifre sıfırlama talebi aldık.<br>
+       Yeni şifrenizi belirlemek için aşağıdaki butona tıklayın.</p>
+
+    <div class="btn-wrap">
+      <a href="{{ link }}" class="btn">🔐&nbsp;&nbsp;Yeni Şifremi Belirle</a>
+    </div>
+
+    <div class="fallback">
+      <p>Buton çalışmıyorsa bu adresi tarayıcınıza kopyalayın:</p>
+      <a href="{{ link }}">{{ link }}</a>
+    </div>
+
+    <div class="warning">
+      <p>⏰ Bu bağlantı <strong>1 saat</strong> süreyle geçerlidir.<br>
+         Bu talebi siz yapmadıysanız bu e-postayı dikkate almayınız.</p>
+    </div>
+  </div>
+
+  <div class="foot">
+    <p>Bu e-posta <strong>{{ gonderici_adi }}</strong> tarafından otomatik gönderilmiştir.<br>
+       Lütfen bu e-postayı yanıtlamayın.</p>
+  </div>
+
+</div>
+</body>
+</html>
