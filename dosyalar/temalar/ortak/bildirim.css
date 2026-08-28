@@ -1,0 +1,86 @@
+/* ── Overlay ──────────────────────────────────────────────────────────────── */
+.bildirim-overlay {
+    position:        fixed;
+    inset:           0;
+    background:      rgba(0, 0, 0, 0.55);
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    z-index:         9999;
+    backdrop-filter: blur(4px);
+    opacity:         0;
+    transition:      opacity .25s ease;
+}
+.bildirim-overlay.bildirim--aktif { opacity: 1; }
+
+/* ── Kart ─────────────────────────────────────────────────────────────────── */
+.bildirim-kart {
+    background:    #151f30;
+    border-radius: 18px;
+    padding:       40px 36px 32px;
+    max-width:     440px;
+    width:         calc(100% - 48px);
+    text-align:    center;
+    box-shadow:    0 24px 64px rgba(0, 0, 0, 0.6);
+    transform:     scale(0.92);
+    transition:    transform .25s ease;
+}
+.bildirim-overlay.bildirim--aktif .bildirim-kart { transform: scale(1); }
+
+/* ── İkon ─────────────────────────────────────────────────────────────────── */
+.bildirim-ikon {
+    width:         70px;
+    height:        70px;
+    border-radius: 50%;
+    border:        2.5px solid;
+    display:       flex;
+    align-items:   center;
+    justify-content: center;
+    margin:        0 auto 22px;
+    font-size:     30px;
+    font-weight:   700;
+    line-height:   1;
+}
+
+/* ── Yazılar ──────────────────────────────────────────────────────────────── */
+.bildirim-baslik {
+    color:          #ffffff;
+    font-size:      20px;
+    font-weight:    700;
+    margin:         0 0 12px;
+    letter-spacing: -.2px;
+}
+.bildirim-mesaj {
+    color:       #94a3b8;
+    font-size:   14px;
+    line-height: 1.65;
+    margin:      0 0 30px;
+}
+
+/* ── Buton ────────────────────────────────────────────────────────────────── */
+.bildirim-buton {
+    width:          100%;
+    color:          #ffffff;
+    border:         none;
+    padding:        13px;
+    border-radius:  9px;
+    font-size:      15px;
+    font-weight:    600;
+    cursor:         pointer;
+    letter-spacing: .2px;
+    transition:     opacity .15s ease;
+}
+.bildirim-buton:hover { opacity: 0.85; }
+
+/* ── Türe göre renkler ────────────────────────────────────────────────────── */
+.bildirim--basari .bildirim-ikon  { border-color: #16a34a; color: #16a34a; }
+.bildirim--basari .bildirim-buton { background:   #16a34a; }
+
+.bildirim--hata   .bildirim-ikon  { border-color: #dc2626; color: #dc2626; }
+.bildirim--hata   .bildirim-buton { background:   #dc2626; }
+
+.bildirim--uyari  .bildirim-ikon  { border-color: #f59e0b; color: #f59e0b; }
+.bildirim--uyari  .bildirim-buton { background:   #f59e0b; }
+
+.bildirim--bilgi  .bildirim-ikon  { border-color: #2563eb; color: #2563eb; }
+.bildirim--bilgi  .bildirim-buton { background:   #2563eb; }
