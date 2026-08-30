@@ -3,7 +3,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const epostaKutusu = document.getElementById("kullanici_adi");
     const sifreKutusu = document.getElementById("password");
 
-    girisButonu.addEventListener("click", async function () {
+    girisButonu.addEventListener("click", async function (e) {
+        e.preventDefault();
+        
         const eposta = epostaKutusu.value.trim();
         const sifre = sifreKutusu.value;
 
@@ -28,17 +30,17 @@ document.addEventListener("DOMContentLoaded", function () {
             const cevap = await istek.json();
 
             if (istek.ok) {
+                // Uyarıyı göster ve "Tamam"a basıldığı an panele git
                 alert(cevap.mesaj);
-                // Başarılı girişten sonra panele yönlendirme komutu eklendi
-                setTimeout(() => {
-                    window.location.href = "/panel";
-                }, 1000);
+                window.location.href = "/panel";
             } else {
                 alert(cevap.detail || cevap.mesaj || "Giriş işlemi başarısız.");
+                // Sadece hata durumunda butonu eski haline getir
+                girisButonu.innerText = "Giriş Yap";
+                girisButonu.disabled = false;
             }
         } catch (hata) {
             alert("Sunucuya bağlanırken bir sorun oluştu.");
-        } finally {
             girisButonu.innerText = "Giriş Yap";
             girisButonu.disabled = false;
         }
