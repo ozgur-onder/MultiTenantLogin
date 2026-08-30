@@ -4,6 +4,9 @@ from datetime import datetime, timedelta
 import os
 import psycopg2
 
+# Cookie adı — tüm dosyalar buradan import eder
+OTURUM_CEREZ = "oturum_token"
+
 # Oturum süresi (dakika)
 OTURUM_SURESI_DK = int(os.getenv("OTURUM_SURESI_DK", "480"))  # varsayılan 8 saat
 

@@ -1,6 +1,6 @@
 import sys
 from fastapi import Request, HTTPException
-from rotalar.oturum_servisi import oturum_dogrula
+from rotalar.oturum_servisi import oturum_dogrula, OTURUM_CEREZ
 import psycopg2
 import os
 
@@ -10,8 +10,6 @@ def db_baglan():
         user=os.getenv("DB_USER"), password=os.getenv("DB_PASS"),
         port=os.getenv("DB_PORT", "5432")
     )
-
-OTURUM_CEREZ = "oturum_token"
 
 async def oturum_gerektir(request: Request) -> dict:
     """

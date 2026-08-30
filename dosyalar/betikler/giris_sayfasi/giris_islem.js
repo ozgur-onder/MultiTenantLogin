@@ -29,8 +29,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (istek.ok) {
                 alert(cevap.mesaj);
+                // Başarılı girişten sonra panele yönlendirme komutu eklendi
+                setTimeout(() => {
+                    window.location.href = "/panel";
+                }, 1000);
             } else {
-                alert(cevap.mesaj);
+                alert(cevap.detail || cevap.mesaj || "Giriş işlemi başarısız.");
             }
         } catch (hata) {
             alert("Sunucuya bağlanırken bir sorun oluştu.");
