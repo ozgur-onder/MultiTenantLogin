@@ -1,0 +1,65 @@
+.hata-modal-arkaplan {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 23, 42, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.hata-modal-kutu {
+    background-color: #1e293b;
+    padding: 32px;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    color: #f8fafc;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+.hata-modal-ikon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 2px solid #ef4444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px auto;
+}
+
+.hata-modal-baslik {
+    margin: 0 0 12px 0;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.hata-modal-metin {
+    margin: 0 0 28px 0;
+    font-size: 15px;
+    color: #94a3b8;
+    line-height: 1.5;
+}
+
+.hata-modal-buton {
+    width: 100%;
+    padding: 14px;
+    background-color: #ef4444;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s;
+}
+
+.hata-modal-buton:hover {
+    background-color: #dc2626;
+}
