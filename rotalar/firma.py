@@ -1,0 +1,40 @@
+from fastapi import APIRouter, Depends
+from fastapi.responses import JSONResponse
+from pydantic import BaseModel
+from rotalar.yetki_servisi import super_admin_gerektir
+from rotalar.firma_servisi import firma_listesi, firma_ekle, firma_durum_guncelle
+
+router = APIRouter(prefix="/api/firma")
+
+class FirmaEkleIstek(BaseModel):
+    firma_kodu: str
+    firma_adi:  str
+
+class DurumIstek(BaseModel):
+    durum: bool
+
+@router.get("")
+async def listele(kullanici: dict = Depends(super_admin_gerektir)):
+    sonuc = await firma_listesi()
+    return JSONResponse(content=sonuc["icerik"], status_code=sonuc["statu"])
+
+@router.post("")
+async def ekle(
+    istek:     FirmaEkleIstek,
+    kullanici: dict = Depends(super_admin_gerektir)
+):
+    sonuc = await firma_ekle(
+        istek.firma_kodu.strip().upper(),
+        istek.firma_adi.strip(),
+        kullanici["sicil"]
+    )
+    return JSONResponse(content=sonuc["icerik"], status_code=sonuc["statu"])
+
+@router.patch("/{firma_kodu}/durum")
+async def durum_guncelle(
+    firma_kodu: str,
+    istek:      DurumIstek,
+    kullanici:  dict = Depends(super_admin_gerektir)
+):
+    sonuc = await firma_durum_guncelle(firma_kodu, istek.durum, kullanici["sicil"])
+    return JSONResponse(content=sonuc["icerik"], status_code=sonuc["statu"])

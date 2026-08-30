@@ -1,0 +1,52 @@
+:root {
+    /* Arka plan katmanları */
+    --renk-zemin:           #f1f5f9;
+    --renk-yuzey:           #ffffff;
+    --renk-kart:            #ffffff;
+    --renk-kart-hover:      #f8fafc;
+    --renk-girdi:           #f8fafc;
+
+    /* Sınırlar */
+    --renk-sinir:           rgba(0, 0, 0, 0.08);
+    --renk-sinir-vurgu:     rgba(0, 0, 0, 0.14);
+
+    /* Metin */
+    --renk-yazi-birincil:   #0f172a;
+    --renk-yazi-ikincil:    #475569;
+    --renk-yazi-uc:         #94a3b8;
+    --renk-yazi-ters:       #f1f5f9;
+
+    /* Vurgu */
+    --renk-vurgu:           #2563eb;
+    --renk-vurgu-hover:     #1d4ed8;
+    --renk-vurgu-acik:      rgba(37, 99, 235, 0.08);
+    --renk-vurgu-metin:     #1d4ed8;
+
+    /* Durum renkleri */
+    --renk-basari:          #16a34a;
+    --renk-basari-acik:     rgba(22, 163, 74, 0.08);
+    --renk-hata:            #dc2626;
+    --renk-hata-acik:       rgba(220, 38, 38, 0.08);
+    --renk-uyari:           #f59e0b;
+    --renk-uyari-acik:      rgba(245, 158, 11, 0.08);
+
+    /* Scrollbar */
+    --renk-scrollbar:       rgba(0, 0, 0, 0.1);
+    --renk-scrollbar-hover: rgba(0, 0, 0, 0.2);
+
+    /* Boyutlar (değişmez) */
+    --kenar-menu-genislik:  260px;
+    --kenar-menu-dar:       64px;
+    --ust-bar-yukseklik:    52px;
+    --menu-radius:          8px;
+
+    /* Geçişler */
+    --gecis:                0.22s ease;
+
+    /* Font */
+    --font:                 -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+
+    /* Gölge */
+    --golge-kart:           0 1px 3px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.06);
+    --golge-menu:           4px 0 24px rgba(0,0,0,0.12);
+}

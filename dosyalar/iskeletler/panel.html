@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İş Zekası Platformu</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232563eb'><path d='M3 3h2v18H3V3zm6 8h2v10H9V11zm6-5h2v15h-2V6zm6 4h2v11h-2v-11z'/></svg>">
+    <link id="tema-stili" rel="stylesheet" href="/temalar/panel/siyah.css">
+    <link rel="stylesheet" href="/temalar/ortak/bildirim.css">
+</head>
+<body>
+
+<div id="uygulama" class="uygulama">
+
+    <!-- ── Kenar Menü ─────────────────────────────────────────────────────── -->
+    <aside id="kenar-menu" class="kenar-menu">
+
+        <div class="menu-logo-alani">
+            <svg class="logo-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 3h2v18H3V3zm6 8h2v10H9V11zm6-5h2v15h-2V6zm6 4h2v11h-2v-11z" fill="currentColor"/>
+            </svg>
+            <span class="logo-yazi">İş Zekası</span>
+        </div>
+
+        <nav class="menu-nav">
+
+            <div class="menu-bolum">
+                <span class="menu-bolum-baslik">ANA MENÜ</span>
+                <ul class="menu-liste">
+                    <li class="menu-ogesi" data-sayfa="anasayfa" data-baslik="Anasayfa" title="Anasayfa">
+                        <span class="menu-ikon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M2.25 12l8.954-8.955a1.126 1.126 0 011.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/>
+                            </svg>
+                        </span>
+                        <span class="menu-yazi">Anasayfa</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="menu-bolum" id="yonetim-bolum" hidden>
+                <span class="menu-bolum-baslik">YÖNETİM</span>
+                <ul class="menu-liste">
+                    <li class="menu-ogesi" data-sayfa="yonetim" data-baslik="Yönetim" title="Yönetim">
+                        <span class="menu-ikon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 010 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 010-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                        </span>
+                        <span class="menu-yazi">Yönetim</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="menu-bolum">
+                <span class="menu-bolum-baslik">HESAP</span>
+                <ul class="menu-liste">
+                    <li class="menu-ogesi" data-sayfa="profilim" data-baslik="Profilim" title="Profilim">
+                        <span class="menu-ikon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/>
+                            </svg>
+                        </span>
+                        <span class="menu-yazi">Profilim</span>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+
+        <div class="menu-kullanici-alani">
+            <div class="kullanici-avatar" id="kullanici-avatar">--</div>
+            <div class="kullanici-bilgi-metin">
+                <span class="kullanici-tam-adi" id="kullanici-tam-adi">Yükleniyor...</span>
+                <span class="kullanici-rol" id="kullanici-rol"></span>
+            </div>
+        </div>
+
+    </aside>
+
+    <!-- ── Ana Alan ───────────────────────────────────────────────────────── -->
+    <div id="ana-alan" class="ana-alan">
+
+        <header class="ust-bar">
+            <div class="ust-bar-sol">
+                <button id="menu-toggle-btn" class="menu-toggle-btn" title="Menüyü aç/kapat">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+                    </svg>
+                </button>
+                <div id="sekme-bar" class="sekme-bar">
+                    <!-- Sekmeler uygulama.js tarafından oluşturulur -->
+                </div>
+            </div>
+            <div class="ust-bar-sag">
+                <button id="tema-btn" class="ust-bar-btn" title="Tema değiştir">
+                    <!-- İkon tema.js tarafından ayarlanır -->
+                </button>
+                <button id="cikis-btn" class="ust-bar-btn ust-bar-cikis" title="Çıkış yap">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9"/>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <main id="sayfa-icerik" class="sayfa-icerik">
+            <!-- Aktif sekmenin içeriği uygulama.js tarafından render edilir -->
+        </main>
+
+    </div>
+
+</div>
+
+<script src="/dosyalar/betikler/ortak/bildirim.js"></script>
+<script src="/dosyalar/betikler/panel/tema.js"></script>
+<script src="/dosyalar/betikler/panel/sekme.js"></script>
+<script src="/dosyalar/betikler/panel/kenar_menu.js"></script>
+<script src="/dosyalar/betikler/panel/sayfalar/anasayfa.js"></script>
+<script src="/dosyalar/betikler/panel/sayfalar/profilim.js"></script>
+<script src="/dosyalar/betikler/panel/sayfalar/yonetim/katalog.js"></script>
+<script src="/dosyalar/betikler/panel/sayfalar/yonetim/firma.js"></script>
+<script src="/dosyalar/betikler/panel/sayfalar/yonetim/rol.js"></script>
+<script src="/dosyalar/betikler/panel/uygulama.js"></script>
+
+</body>
+</html>

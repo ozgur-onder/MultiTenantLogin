@@ -1,0 +1,35 @@
+/* ── Reset ve temel ─────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+    height: 100%;
+    font-family: var(--font);
+    background: var(--renk-zemin);
+    color: var(--renk-yazi-birincil);
+    overflow: hidden;
+}
+
+/* ── Scrollbar ───────────────────────────────────────────────────────────── */
+::-webkit-scrollbar              { width: 5px; height: 5px; }
+::-webkit-scrollbar-track        { background: transparent; }
+::-webkit-scrollbar-thumb        { background: var(--renk-scrollbar); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover  { background: var(--renk-scrollbar-hover); }
+
+/* ── Ana uygulama ızgarası ───────────────────────────────────────────────── */
+.uygulama {
+    display: grid;
+    grid-template-columns: var(--kenar-menu-genislik) 1fr;
+    height: 100vh;
+    transition: grid-template-columns var(--gecis);
+}
+.uygulama.menu-kapali {
+    grid-template-columns: var(--kenar-menu-dar) 1fr;
+}
+
+/* ── Ana alan ────────────────────────────────────────────────────────────── */
+.ana-alan {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--renk-zemin);
+}

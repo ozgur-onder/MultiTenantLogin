@@ -1,0 +1,46 @@
+/* ── Kart ────────────────────────────────────────────────────────────────── */
+.kart {
+    background: var(--renk-kart);
+    border: 1px solid var(--renk-sinir);
+    border-radius: 14px;
+    padding: 24px;
+    box-shadow: var(--golge-kart);
+    transition: background var(--gecis), border-color var(--gecis), transform var(--gecis);
+}
+.kart:hover { border-color: var(--renk-sinir-vurgu); }
+.kart-tıklanabilir { cursor: pointer; }
+.kart-tıklanabilir:hover { transform: translateY(-2px); background: var(--renk-kart-hover); }
+
+/* ── Katalog kartı (Yönetim alt menüleri) ─────────────────────────────────── */
+.katalog-kart {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.katalog-ikon-kap {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: var(--renk-vurgu-acik);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--renk-vurgu);
+}
+.katalog-ikon-kap svg { width: 24px; height: 24px; }
+.katalog-kart-baslik {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--renk-yazi-birincil);
+}
+.katalog-kart-aciklama {
+    font-size: 13px;
+    color: var(--renk-yazi-ikincil);
+    line-height: 1.5;
+    flex: 1;
+}
+.katalog-kart-btn {
+    margin-top: 4px;
+    width: 100%;
+    justify-content: center;
+}

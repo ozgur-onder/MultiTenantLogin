@@ -1,0 +1,126 @@
+/* ── Sayfa içerik alanı ──────────────────────────────────────────────────── */
+.sayfa-icerik {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 28px 32px;
+    background: var(--renk-zemin);
+}
+
+/* ── Sayfa başlığı ───────────────────────────────────────────────────────── */
+.sayfa-baslik {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--renk-yazi-birincil);
+    margin-bottom: 6px;
+    letter-spacing: -.3px;
+}
+.sayfa-aciklama {
+    font-size: 14px;
+    color: var(--renk-yazi-ikincil);
+    margin-bottom: 28px;
+}
+
+/* ── Izgara ──────────────────────────────────────────────────────────────── */
+.izgara-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.izgara-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.izgara-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+
+/* ── Tablo ───────────────────────────────────────────────────────────────── */
+.tablo-kap {
+    background: var(--renk-kart);
+    border: 1px solid var(--renk-sinir);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--golge-kart);
+}
+.tablo {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+.tablo thead tr {
+    background: var(--renk-yuzey);
+    border-bottom: 1px solid var(--renk-sinir);
+}
+.tablo th {
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--renk-yazi-uc);
+    white-space: nowrap;
+}
+.tablo td {
+    padding: 12px 16px;
+    color: var(--renk-yazi-birincil);
+    border-bottom: 1px solid var(--renk-sinir);
+}
+.tablo tbody tr:last-child td { border-bottom: none; }
+.tablo tbody tr:hover td { background: var(--renk-kart-hover); }
+
+/* ── Form öğeleri ────────────────────────────────────────────────────────── */
+.form-grup { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+.form-etiket { font-size: 13px; font-weight: 500; color: var(--renk-yazi-ikincil); }
+.form-girdi {
+    width: 100%;
+    padding: 10px 14px;
+    background: var(--renk-girdi);
+    border: 1px solid var(--renk-sinir);
+    border-radius: 8px;
+    color: var(--renk-yazi-birincil);
+    font-family: var(--font);
+    font-size: 14px;
+    outline: none;
+    transition: border-color var(--gecis);
+}
+.form-girdi:focus { border-color: var(--renk-vurgu); }
+.form-girdi::placeholder { color: var(--renk-yazi-uc); }
+
+/* ── Butonlar ────────────────────────────────────────────────────────────── */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 18px;
+    border: none;
+    border-radius: 8px;
+    font-family: var(--font);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background var(--gecis), opacity var(--gecis);
+    white-space: nowrap;
+}
+.btn:hover { opacity: 0.88; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn-birincil { background: var(--renk-vurgu); color: #fff; }
+.btn-ikincil  { background: var(--renk-kart-hover); color: var(--renk-yazi-birincil); border: 1px solid var(--renk-sinir); }
+.btn-basari   { background: var(--renk-basari); color: #fff; }
+.btn-tehlike  { background: var(--renk-hata);   color: #fff; }
+.btn-kucuk    { padding: 5px 12px; font-size: 12px; }
+
+/* ── Durum badge ─────────────────────────────────────────────────────────── */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 10px;
+    border-radius: 99px;
+    font-size: 12px;
+    font-weight: 500;
+}
+.badge-aktif  { background: var(--renk-basari-acik); color: var(--renk-basari); }
+.badge-pasif  { background: var(--renk-hata-acik);   color: var(--renk-hata);   }
+.badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+/* ── Yükleniyor ──────────────────────────────────────────────────────────── */
+.yukleniyor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+    color: var(--renk-yazi-ikincil);
+    font-size: 14px;
+}

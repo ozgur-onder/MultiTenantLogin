@@ -1,0 +1,136 @@
+/* ── Üst bar ─────────────────────────────────────────────────────────────── */
+.ust-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--ust-bar-yukseklik);
+    background: var(--renk-yuzey);
+    border-bottom: 1px solid var(--renk-sinir);
+    flex-shrink: 0;
+    overflow: hidden;
+}
+.ust-bar-sol {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    overflow: hidden;
+    min-width: 0;
+}
+.ust-bar-sag {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0 8px;
+    flex-shrink: 0;
+}
+
+/* ── Hamburger ────────────────────────────────────────────────────────────── */
+.menu-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin: 0 4px;
+    border: none;
+    background: transparent;
+    color: var(--renk-yazi-ikincil);
+    border-radius: var(--menu-radius);
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background var(--gecis), color var(--gecis);
+}
+.menu-toggle-btn:hover {
+    background: var(--renk-vurgu-acik);
+    color: var(--renk-yazi-birincil);
+}
+.menu-toggle-btn svg { width: 20px; height: 20px; }
+
+/* ── Sekme bar ────────────────────────────────────────────────────────────── */
+.sekme-bar {
+    display: flex;
+    align-items: stretch;
+    height: var(--ust-bar-yukseklik);
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    flex: 1;
+    min-width: 0;
+}
+.sekme-bar::-webkit-scrollbar { display: none; }
+
+/* ── Tek sekme ────────────────────────────────────────────────────────────── */
+.sekme {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 14px;
+    min-width: 100px;
+    max-width: 180px;
+    height: 100%;
+    background: transparent;
+    border: none;
+    border-right: 1px solid var(--renk-sinir);
+    border-bottom: 2px solid transparent;
+    color: var(--renk-yazi-ikincil);
+    font-family: var(--font);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: background var(--gecis), color var(--gecis), border-color var(--gecis);
+    flex-shrink: 0;
+    user-select: none;
+}
+.sekme:hover {
+    background: var(--renk-vurgu-acik);
+    color: var(--renk-yazi-birincil);
+}
+.sekme.aktif {
+    background: var(--renk-vurgu-acik);
+    color: var(--renk-vurgu-metin);
+    border-bottom-color: var(--renk-vurgu);
+}
+.sekme-yazi {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.sekme-kapat {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    opacity: 0;
+    transition: opacity var(--gecis), background var(--gecis);
+    font-size: 14px;
+    line-height: 1;
+}
+.sekme:hover .sekme-kapat,
+.sekme.aktif .sekme-kapat { opacity: 0.6; }
+.sekme-kapat:hover { opacity: 1 !important; background: var(--renk-hata-acik); color: var(--renk-hata); }
+
+/* ── Üst bar sağ butonlar ────────────────────────────────────────────────── */
+.ust-bar-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: transparent;
+    color: var(--renk-yazi-ikincil);
+    border-radius: var(--menu-radius);
+    cursor: pointer;
+    transition: background var(--gecis), color var(--gecis);
+}
+.ust-bar-btn:hover {
+    background: var(--renk-vurgu-acik);
+    color: var(--renk-yazi-birincil);
+}
+.ust-bar-btn svg { width: 18px; height: 18px; }
+.ust-bar-cikis:hover { background: var(--renk-hata-acik); color: var(--renk-hata); }
