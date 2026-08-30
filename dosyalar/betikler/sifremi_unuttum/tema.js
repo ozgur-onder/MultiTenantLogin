@@ -1,36 +1,34 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const temaStili = document.getElementById("theme-style");
-    const temaButonu = document.querySelector(".theme-toggle");
+function hataPenceresiGoster(mesaj) {
+    const overlay = document.createElement("div");
+    overlay.className = "hata-modal-arkaplan";
 
-    const ayIkonu = '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
-    const gunesIkonu = '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>';
+    const modal = document.createElement("div");
+    modal.className = "hata-modal-kutu";
 
-    function temaUygula(tema) {
-        if (tema === "koyu") {
-            // Yol sadece bu sayfanın izole klasörüne bakıyor
-            temaStili.setAttribute("href", "/temalar/sifremi_unuttum/siyah.css");
-            temaButonu.innerHTML = gunesIkonu; 
-        } else {
-            // Yol sadece bu sayfanın izole klasörüne bakıyor
-            temaStili.setAttribute("href", "/temalar/sifremi_unuttum/beyaz.css");
-            temaButonu.innerHTML = ayIkonu; 
-        }
-        localStorage.setItem("secilen-tema", tema);
-    }
+    const iconDiv = document.createElement("div");
+    iconDiv.className = "hata-modal-ikon";
+    iconDiv.innerHTML = '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>';
 
-    const kayitliTema = localStorage.getItem("secilen-tema");
-    if (kayitliTema) {
-        temaUygula(kayitliTema);
-    } else {
-        temaUygula("acik");
-    }
+    const title = document.createElement("h3");
+    title.className = "hata-modal-baslik";
+    title.innerText = "Hata";
 
-    temaButonu.addEventListener("click", function () {
-        const mevcutCss = temaStili.getAttribute("href");
-        if (mevcutCss.includes("beyaz.css")) {
-            temaUygula("koyu");
-        } else {
-            temaUygula("acik");
-        }
-    });
-});
+    const desc = document.createElement("p");
+    desc.className = "hata-modal-metin";
+    desc.innerText = mesaj;
+
+    const btn = document.createElement("button");
+    btn.className = "hata-modal-buton";
+    btn.innerText = "Anladım";
+
+    btn.onclick = function() {
+        document.body.removeChild(overlay);
+    };
+
+    modal.appendChild(iconDiv);
+    modal.appendChild(title);
+    modal.appendChild(desc);
+    modal.appendChild(btn);
+    overlay.appendChild(modal);
+    document.body.appendChild(overlay);
+}
