@@ -3,7 +3,7 @@
  * Bağımlılık: #tema-stili linki panel.html'de tanımlı.
  */
 (function () {
-    const DEPOLAMA_ANAHTARI = "panel-tema";
+    const DEPOLAMA_ANAHTARI = "secilen-tema";
     const SIYAH_YOL  = "/temalar/panel/siyah.css";
     const BEYAZ_YOL  = "/temalar/panel/beyaz.css";
 
@@ -22,23 +22,27 @@
         const btn  = document.getElementById("tema-btn");
         if (!link || !btn) return;
 
-        if (tema === "siyah") {
+        // Hem yeni (koyu) hem eski (siyah) değerini anla
+        if (tema === "koyu" || tema === "siyah") {
             link.setAttribute("href", SIYAH_YOL);
             btn.innerHTML = GUNES_IKONU;
+            localStorage.setItem(DEPOLAMA_ANAHTARI, "koyu");
         } else {
+            // Hem yeni (acik) hem eski (beyaz) değerini anla
             link.setAttribute("href", BEYAZ_YOL);
             btn.innerHTML = AY_IKONU;
+            localStorage.setItem(DEPOLAMA_ANAHTARI, "acik");
         }
-        localStorage.setItem(DEPOLAMA_ANAHTARI, tema);
     }
 
     function basla() {
-        const kayitli = localStorage.getItem(DEPOLAMA_ANAHTARI) || "siyah";
+        // İlk açılışta ortak hafıza anahtarını kontrol et
+        const kayitli = localStorage.getItem(DEPOLAMA_ANAHTARI) || "koyu";
         temaUygula(kayitli);
 
         document.getElementById("tema-btn")?.addEventListener("click", () => {
-            const mevcutHref = document.getElementById("tema-stili")?.getAttribute("href") || "";
-            temaUygula(mevcutHref.includes("siyah") ? "beyaz" : "siyah");
+            const mevcutKoyuMu = document.getElementById("tema-stili")?.getAttribute("href")?.includes("siyah");
+            temaUygula(mevcutKoyuMu ? "acik" : "koyu");
         });
     }
 
