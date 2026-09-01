@@ -7,6 +7,7 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232563eb'><path d='M3 3h2v18H3V3zm6 8h2v10H9V11zm6-5h2v15h-2V6zm6 4h2v11h-2v-11z'/></svg>">
     <link id="tema-stili" rel="stylesheet" href="/temalar/panel/siyah.css">
     <link rel="stylesheet" href="/temalar/ortak/bildirim.css">
+    <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
 </head>
 <body>
 
@@ -116,6 +117,75 @@
     </div>
 
 </div>
+
+<!-- ── Şablonlar (Templates) ────────────────────────────────────────────── -->
+<template id="sablon-yonetim">
+    <div style="padding: 2rem;">
+        <h2 style="margin-bottom: 24px; color: var(--metin-rengi, inherit);">Yönetim Paneli</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px;">
+            
+            <div id="kart-firma" style="background: rgba(100,100,100,0.1); padding: 24px; border-radius: 12px; cursor: pointer; border: 1px solid rgba(100,100,100,0.2);">
+                <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                    <svg style="width: 24px; height: 24px; margin-right: 12px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                    <h3 style="margin: 0;">Firma Yönetimi</h3>
+                </div>
+                <p style="margin: 0; opacity: 0.7; font-size: 0.9em;">Sistemde kayıtlı firmaları listeleyin ve yönetin.</p>
+            </div>
+
+            <div id="kart-rol" style="background: rgba(100,100,100,0.1); padding: 24px; border-radius: 12px; cursor: pointer; border: 1px solid rgba(100,100,100,0.2);">
+                <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                    <svg style="width: 24px; height: 24px; margin-right: 12px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    <h3 style="margin: 0;">Rol Yönetimi</h3>
+                </div>
+                <p style="margin: 0; opacity: 0.7; font-size: 0.9em;">Kullanıcı yetkilerini ve rollerini yapılandırın.</p>
+            </div>
+
+            <div id="kart-katalog" style="background: rgba(100,100,100,0.1); padding: 24px; border-radius: 12px; cursor: pointer; border: 1px solid rgba(100,100,100,0.2);">
+                <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                    <svg style="width: 24px; height: 24px; margin-right: 12px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+                    <h3 style="margin: 0;">Katalog Yönetimi</h3>
+                </div>
+                <p style="margin: 0; opacity: 0.7; font-size: 0.9em;">Rapor ve veri ambarı parametrelerini yönetin.</p>
+            </div>
+
+        </div>
+    </div>
+</template>
+
+<template id="sablon-firma-listesi">
+    <div style="padding: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+            <h2 style="margin: 0; color: var(--metin-rengi, inherit);">Firma Listesi</h2>
+            <div style="display: flex; gap: 10px;">
+                <button id="excel-aktar-btn" style="padding: 10px 16px; background: #10b981; color: white; border: none; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 6px;">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    Excel'e Aktar
+                </button>
+                <button id="yeni-firma-btn" style="padding: 10px 16px; background: #2563eb; color: white; border: none; border-radius: 8px; cursor: pointer;">
+                    + Yeni Firma Ekle
+                </button>
+            </div>
+        </div>
+        <div id="firma-tablo-alani" style="display: flex; flex-direction: column; gap: 12px;">
+            <p id="firma-mesaj" style="opacity: 0.7; padding: 20px; border-radius: 12px; background: rgba(100,100,100,0.1); border: 1px solid rgba(100,100,100,0.2);">Veriler yükleniyor...</p>
+        </div>
+    </div>
+</template>
+
+<template id="sablon-firma-satiri">
+    <div class="firma-satiri" style="display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; background: rgba(30, 41, 59, 0.5); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.05); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+            <strong class="firma-adi" style="color: white; font-size: 1.1em;"></strong>
+            <span class="firma-kodu" style="color: #94a3b8; font-size: 0.85em;"></span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <span class="durum-yazi" style="font-size: 0.9em; font-weight: 500; min-width: 40px; text-align: right;"></span>
+            <div class="toggle-btn" style="width: 44px; height: 24px; border-radius: 24px; position: relative; cursor: pointer; transition: background-color 0.3s;">
+                <div class="toggle-daire" style="width: 18px; height: 18px; background-color: white; border-radius: 50%; position: absolute; top: 3px; transition: left 0.3s;"></div>
+            </div>
+        </div>
+    </div>
+</template>
 
 <script src="/dosyalar/betikler/ortak/bildirim.js"></script>
 <script src="/dosyalar/betikler/panel/tema.js"></script>

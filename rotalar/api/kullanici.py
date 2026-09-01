@@ -37,3 +37,31 @@ async def beni_al(kullanici: dict = Depends(oturum_gerektir)):
     finally:
         if cursor: cursor.close()
         if conn:   conn.close()
+
+@router.get("/profil")
+async def profil_al(kullanici: dict = Depends(oturum_gerektir)):
+    """Arayüzdeki sol menü ve anasayfa için profil bilgilerini döndürür."""
+    conn = cursor = None
+    try:
+        conn   = db_baglan()
+        cursor = conn.cursor()
+        cursor.execute(
+            "SELECT rol_id FROM kullanici_yetkileri WHERE sicil=%s AND durum=TRUE LIMIT 1",
+            (kullanici["sicil"],)
+        )
+        rol_kayit = cursor.fetchone()
+        rol = rol_kayit[0] if rol_kayit else "Kullanıcı"
+        
+        return JSONResponse(content={
+            "ad_soyad": kullanici["ad_soyad"],
+            "rol": rol
+        })
+    except Exception as e:
+        print(f"[profil] {type(e).__name__}: {e}", file=sys.stderr)
+        return JSONResponse(content={
+            "ad_soyad": kullanici.get("ad_soyad", "Bilinmeyen Kullanıcı"),
+            "rol": "Belirtilmemiş"
+        })
+    finally:
+        if cursor: cursor.close()
+        if conn:   conn.close()
