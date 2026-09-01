@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from rotalar.yetki_servisi import super_admin_gerektir
-from rotalar.firma_servisi import firma_listesi, firma_ekle, firma_durum_guncelle
+from rotalar.firma_servisi import firma_listesi, firma_ekle, firma_durum_guncelle, firma_loglari_getir
 
 router = APIRouter(prefix="/api/firma")
 
@@ -37,4 +37,9 @@ async def durum_guncelle(
     kullanici:  dict = Depends(super_admin_gerektir)
 ):
     sonuc = await firma_durum_guncelle(firma_kodu, istek.durum, kullanici["sicil"])
+    return JSONResponse(content=sonuc["icerik"], status_code=sonuc["statu"])
+
+@router.get("/loglar")
+async def loglari_getir(kullanici: dict = Depends(super_admin_gerektir)):
+    sonuc = await firma_loglari_getir()
     return JSONResponse(content=sonuc["icerik"], status_code=sonuc["statu"])

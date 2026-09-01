@@ -9,18 +9,34 @@ def db_baglan():
         port=os.getenv("DB_PORT", "5432")
     )
 
+def tarih_bicimlendir(dt):
+    if not dt:
+        return ""
+    if isinstance(dt, str):
+        try:
+            dt = datetime.fromisoformat(dt.replace("Z", "+00:00"))
+        except:
+            return dt
+    return dt.strftime("%d.%m.%Y %H:%M:%S")
+
 async def firma_listesi() -> dict:
     conn = cursor = None
     try:
-        conn   = db_baglan()
+        conn = db_baglan()
         cursor = conn.cursor()
         cursor.execute(
-            "SELECT firma_kodu, firma_adi, durum, olusturma_guncelleme_zamani FROM firma ORDER BY firma_adi"
+            "SELECT firma_kodu, firma_adi, durum, olusturma_guncelleme_zamani, olusturan_guncelleyen_sicil FROM firma ORDER BY firma_adi"
         )
         satırlar = cursor.fetchall()
         firmalar = [
-            {"firma_kodu": r[0], "firma_adi": r[1],
-             "durum": r[2], "zaman": r[3].isoformat()}
+            {
+                "Firma Kodu": r[0],
+                "Firma Adı": r[1],
+                "Durum": "Aktif" if r[2] else "Pasif",
+                "_durum_bool": r[2],
+                "Son İşlem Zamanı": tarih_bicimlendir(r[3]),
+                "İşlem Yapan Sicil": r[4] or "SİSTEM"
+            }
             for r in satırlar
         ]
         return {"icerik": firmalar, "statu": 200}
@@ -34,10 +50,9 @@ async def firma_listesi() -> dict:
 async def firma_ekle(firma_kodu: str, firma_adi: str, islem_yapan_sicil: str) -> dict:
     conn = cursor = None
     try:
-        conn   = db_baglan()
+        conn = db_baglan()
         cursor = conn.cursor()
 
-        # Mükerrer kontrol
         cursor.execute("SELECT 1 FROM firma WHERE firma_kodu=%s", (firma_kodu,))
         if cursor.fetchone():
             return {"icerik": {"detail": "Bu firma kodu zaten kayıtlı."}, "statu": 409}
@@ -61,7 +76,7 @@ async def firma_durum_guncelle(firma_kodu: str, yeni_durum: bool,
                                islem_yapan_sicil: str) -> dict:
     conn = cursor = None
     try:
-        conn   = db_baglan()
+        conn = db_baglan()
         cursor = conn.cursor()
 
         cursor.execute(
@@ -94,6 +109,38 @@ async def firma_durum_guncelle(firma_kodu: str, yeni_durum: bool,
         print(f"[firma_servisi] durum {type(e).__name__}: {e}", file=sys.stderr)
         if conn: conn.rollback()
         return {"icerik": {"detail": "Durum güncellenemedi."}, "statu": 500}
+    finally:
+        if cursor: cursor.close()
+        if conn:   conn.close()
+
+async def firma_loglari_getir() -> dict:
+    conn = cursor = None
+    try:
+        conn = db_baglan()
+        cursor = conn.cursor()
+        cursor.execute("""
+            SELECT id, firma_kodu, firma_adi, eski_durum, yeni_durum, 
+                   islem_zamani, islem_yapan_kullanici_sicil 
+            FROM firma_guncelleme_loglari 
+            ORDER BY islem_zamani DESC
+        """)
+        satirlar = cursor.fetchall()
+        loglar = [
+            {
+                "Log ID": r[0],
+                "Firma Kodu": r[1],
+                "Firma Adı": r[2],
+                "Eski Durum": "Aktif" if r[3] else "Pasif",
+                "Yeni Durum": "Aktif" if r[4] else "Pasif",
+                "İşlem Zamanı": tarih_bicimlendir(r[5]),
+                "İşlem Yapan Sicil": r[6] or "SİSTEM"
+            }
+            for r in satirlar
+        ]
+        return {"icerik": loglar, "statu": 200}
+    except Exception as e:
+        print(f"[firma_servisi] log_getir {type(e).__name__}: {e}", file=sys.stderr)
+        return {"icerik": {"detail": "Loglar alınamadı."}, "statu": 500}
     finally:
         if cursor: cursor.close()
         if conn:   conn.close()
