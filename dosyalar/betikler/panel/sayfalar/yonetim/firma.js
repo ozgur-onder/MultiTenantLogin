@@ -88,7 +88,7 @@
     }
 
     function firmaListesiSekmesiAc() {
-        Sekme.ac("firma_listesi", "Firmalar", async (icerikAlani) => {
+        Sekme.ac("firma_listesi", "Firma Yönetimi", async (icerikAlani) => {
             const sablon = document.getElementById("sablon-firma-listesi");
             if (!sablon) {
                 console.error("sablon-firma-listesi bulunamadı!");

@@ -33,7 +33,6 @@ async def firma_listesi() -> dict:
                 "Firma Kodu": r[0],
                 "Firma Adı": r[1],
                 "Durum": "Aktif" if r[2] else "Pasif",
-                "_durum_bool": r[2],
                 "Son İşlem Zamanı": tarih_bicimlendir(r[3]),
                 "İşlem Yapan Sicil": r[4] or "SİSTEM"
             }
