@@ -27,9 +27,22 @@
             icerikAlani.innerHTML = "";
             icerikAlani.appendChild(sablon.content.cloneNode(true));
 
+            // FİRMA KARTI BAĞLANTISI
             const firmaKarti = icerikAlani.querySelector("#kart-firma");
             if (firmaKarti) {
                 firmaKarti.addEventListener("click", firmaListesiSekmesiAc);
+            }
+
+            // ROL KARTI BAĞLANTISI (YENİ EKLENEN KISIM)
+            const rolKarti = icerikAlani.querySelector("#kart-rol");
+            if (rolKarti) {
+                rolKarti.addEventListener("click", () => {
+                    if (typeof RolYonetimi !== 'undefined') {
+                        RolYonetimi.baslat();
+                    } else {
+                        alert("Rol modülü yüklenemedi.");
+                    }
+                });
             }
         });
     }
@@ -141,38 +154,61 @@
 
                     firmalar.forEach(firma => {
                         const satirKlon = satirSablonu.content.cloneNode(true);
-                        
+
                         satirKlon.querySelector(".firma-kodu").textContent = firma["Firma Kodu"];
                         satirKlon.querySelector(".firma-adi").textContent = firma["Firma Adı"];
-                        
+
                         const detayMetni = `${firma["İşlem Yapan Sicil"]} — ${firma["Son İşlem Zamanı"]}`;
                         satirKlon.querySelector(".firma-detay").textContent = detayMetni;
 
-                        const isAktif = firma["Durum"] === "Aktif";
+                        // let: tıklama sonrası state güncellenebilsin
+                        let aktifMi = firma["Durum"] === "Aktif";
                         const badge = satirKlon.querySelector(".durum-badge");
                         const aksiyonBtn = satirKlon.querySelector(".aksiyon-btn");
 
-                        badge.textContent = firma["Durum"];
-                        badge.classList.add(isAktif ? "badge-aktif" : "badge-pasif");
+                        // Badge + buton DOM güncellemesini tek yerden yönet (rol.js ile aynı pattern)
+                        function satirDurumGuncelle(durum) {
+                            badge.textContent = durum ? "Aktif" : "Pasif";
+                            badge.classList.remove("badge-aktif", "badge-pasif");
+                            badge.classList.add(durum ? "badge-aktif" : "badge-pasif");
+                            aksiyonBtn.textContent = durum ? "Pasife Al" : "Aktifleştir";
+                            aksiyonBtn.classList.remove("btn-tehlike", "btn-basari");
+                            aksiyonBtn.classList.add(durum ? "btn-tehlike" : "btn-basari");
+                        }
 
-                        aksiyonBtn.textContent = isAktif ? "Pasife Al" : "Aktifleştir";
-                        aksiyonBtn.classList.add(isAktif ? "btn-tehlike" : "btn-basari");
+                        satirDurumGuncelle(aktifMi);
 
-                        aksiyonBtn.addEventListener("click", async function() {
+                        aksiyonBtn.addEventListener("click", async function () {
+                            const yeniDurum = !aktifMi;
+
+                            // 1) Anlık (optimistik) güncelleme
+                            satirDurumGuncelle(yeniDurum);
+                            aksiyonBtn.disabled = true;
+
                             try {
                                 const y = await fetch(`/api/firma/${firma["Firma Kodu"]}/durum`, {
                                     method: "PATCH",
                                     headers: { "Content-Type": "application/json" },
-                                    body: JSON.stringify({ durum: !isAktif })
+                                    body: JSON.stringify({ durum: yeniDurum })
                                 });
 
                                 if (y.ok) {
-                                    firmaListesiSekmesiAc();
+                                    // 2) State'i kalıcı olarak güncelle
+                                    aktifMi = yeniDurum;
+                                    // Excel export için globalFirmaVerisi'ni de güncelle
+                                    const idx = globalFirmaVerisi.findIndex(f => f["Firma Kodu"] === firma["Firma Kodu"]);
+                                    if (idx !== -1) globalFirmaVerisi[idx]["Durum"] = yeniDurum ? "Aktif" : "Pasif";
                                 } else {
+                                    // 3) Hata: eski hale geri al
+                                    satirDurumGuncelle(aktifMi);
                                     alert("Durum güncellenemedi.");
                                 }
                             } catch (e) {
+                                // 3) Ağ hatası: eski hale geri al
+                                satirDurumGuncelle(aktifMi);
                                 alert("İşlem sırasında hata oluştu.");
+                            } finally {
+                                aksiyonBtn.disabled = false;
                             }
                         });
 
